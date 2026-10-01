@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>IGEE Marketplace | Buy & Sell in Nigeria</title>
+
+  <meta name="description" content="IGEE Marketplace is a Nigerian online marketplace for discovering products in Asaba, Ogwashi-Uku and across Nigeria.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* HEADER */
+
+    header {
+      background: #080808;
+      color: white;
+      padding: 15px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #20c878;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: #20c878;
+    }
+
+    .cart {
+      border: 1px solid #20c878;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    /* SEARCH */
+
+    .search-area {
+      max-width: 1200px;
+      margin: 15px auto 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .search-area input {
+      flex: 1;
+      padding: 13px;
+      border: none;
+      border-radius: 7px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .search-area button {
+      background: #20c878;
+      color: #07100b;
+      border: none;
+      padding: 0 20px;
+      border-radius: 7px;
+      font-weight: bold;
+    }
+
+    /* HERO */
+
+    .hero {
+      background: linear-gradient(135deg, #090909, #17241c);
+      color: white;
+      padding: 70px 5%;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(35px, 6vw, 65px);
+      max-width: 700px;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #20c878;
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: #d0d0d0;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 13px 22px;
+      border-radius: 7px;
+      border: none;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .btn-green {
+      background: #20c878;
+      color: #06100a;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1px solid white;
+    }
+
+    /* MAIN */
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 45px 5%;
+    }
+
+    .section-title {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    /* CATEGORIES */
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin-bottom: 50px;
+    }
+
+    .category {
+      background: white;
+      padding: 20px 10px;
+      text-align: center;
+      border-radius: 10px;
+      border: 1px solid #e5e5e5;
+      transition: 0.2s;
+    }
+
+    .category:hover {
+      transform: translateY(-3px);
+      border-color: #20c878;
+    }
+
+    .category-icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .category-name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* PRODUCTS */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e4e4e4;
+      transition: 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .product-image {
+      height: 190px;
+      background: #e9e9e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 50px;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .condition {
+      display: inline-block;
+      font-size: 12px;
+      background: #e7f8ef;
+      color: #087b42;
+      padding: 5px 8px;
+      border-radius: 5px;
+      margin-bottom: 8px;
+    }
+
+    .location {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .product-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+
+    .product-buttons button {
+      padding: 9px 5px;
+      border-radius: 5px;
+      font-weight: bold;
+      border: 1px solid #ddd;
+      background: white;
+    }
+
+    .product-buttons .buy {
+      background: #20c878;
+      border-color: #20c878;
+      color: #06100a;
+    }
+
+    /* SELL SECTION */
+
+    .sell-section {
+      background: #080808;
+      color: white;
+      border-radius: 15px;
+      padding: 35px;
+      margin: 55px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .sell-section h2 {
+      margin-bottom: 10px;
+    }
+
+    .sell-section p {
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    /* HOW IT WORKS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+
+    .step {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      background: #20c878;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .step h3 {
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: #666;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* TRUST */
+
+    .trust {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 50px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .trust ul {
+      list-style: none;
+      line-height: 2;
+      color: #444;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #080808;
+      color: white;
+      padding: 45px 5% 20px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+    }
+
+    footer h3 {
+      margin-bottom: 15px;
+    }
+
+    footer a {
+      display: block;
+      color: #bbb;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    footer a:hover {
+      color: #20c878;
+    }
+
+    .copyright {
+      max-width: 1200px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      color: #999;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+
+      .top-bar {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 50px 5%;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .product-image {
+        height: 145px;
+      }
+
+      .product h3 {
+        font-size: 14px;
+      }
+
+      .price {
+        font-size: 17px;
+      }
+
+      .product-buttons {
+        grid-template-columns: 1fr;
+      }
+
+      .sell-section {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="top-bar">
+
+      <div class="logo">
+        IGEE<span> Marketplace</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#shop">Shop</a>
+        <a href="#sell">Sell</a>
+        <a href="#account">Account</a>
+        <a href="#wishlist">♡ Wishlist</a>
+        <a href="#cart" class="cart">🛒 Cart</a>
+      </nav>
+
+    </div>
+
+    <div class="search-area">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search phones, shoes, electronics and more..."
+      >
+      <button onclick="searchProducts()">Search</button>
+    </div>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Buy Smart.<br>
+        Sell With <span>Confidence.</span>
+      </h1>
+
+      <p>
+        Discover products from Asaba, Ogwashi-Uku and across Nigeria
+        on IGEE Marketplace.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#shop" class="btn btn-green">
+          Shop
+        </a>
+
+        <a href="#sell" class="btn btn-outline">
+          Sell Your Product
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MAIN -->
+
+  <main>
+
+    <!-- CATEGORIES -->
+
+    <section>
+
+      <h2 class="section-title">
+        Shop By Category
+      </h2>
+
+      <div class="categories">
+
+        <div class="category">
+          <div class="category-icon">📱</div>
+          <div class="category-name">Phones</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">🍎</div>
+          <div class="category-name">iPhones</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">👟</div>
+          <div class="category-name">Shoes</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">👕</div>
+          <div class="category-name">Clothing</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">🎧</div>
+          <div class="category-name">Electronics</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">⌚</div>
+          <div class="category-name">Watches</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">👜</div>
+          <div class="category-name">Bags</div>
+        </div>
+
+        <div class="category">
+          <div class="category-icon">💄</div>
+          <div class="category-name">Beauty</div>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+
+    <section id="shop">
+
+      <h2 class="section-title">
+        Featured Products
+      </h2>
+
+      <div class="products">
+
+
+        <div class="product">
+
+          <div class="product-image">
+            📱
+          </div>
+
+          <div class="product-info">
+
+            <span class="condition">
+              Brand New
+            </span>
+
+            <h3>
+              Tecno Camon 30
+            </h3>
+
+            <div class="price">
+              ₦350,000
+            </div>
+
+            <div class="location">
+              📍 Asaba, Delta State
+            </div>
+
+            <div class="product-buttons">
+
+              <button class="buy"
+                onclick="buyProduct('Tecno Camon 30','₦350,000','Asaba')">
+                Buy Now
+              </button>
+
+              <button
+                onclick="chatSeller('Tecno Camon 30')">
+                Chat Seller
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <div class="product-image">
+            📱
+          </div>
+
+          <div class="product-info">
+
+            <span class="condition">
+              Brand New
+            </span>
+
+            <h3>
+              Infinix Hot 40
+            </h3>
+
+            <div class="price">
+              ₦245,000
+            </div>
+
+            <div class="location">
+              📍 Ogwashi-Uku, Delta State
+            </div>
+
+            <div class="product-buttons">
+
+              <button class="buy"
+                onclick="buyProduct('Infinix Hot 40','₦245,000','Ogwashi-Uku')">
+                Buy Now
+              </button>
+
+              <button
+                onclick="chatSeller('Infinix Hot 40')">
+                Chat Seller
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <div class="product-image">
+            📱
+          </div>
+
+          <div class="product-info">
+
+            <span class="condition">
+              Used - Excellent
+            </span>
+
+            <h3>
+              Samsung Galaxy A15
+            </h3>
+
+            <div class="price">
+              ₦210,000
+            </div>
+
+            <div class="location">
+              📍 Asaba, Delta State
+            </div>
+
+            <div class="product-buttons">
+
+              <button class="buy"
+                onclick="buyProduct('Samsung Galaxy A15','₦210,000','Asaba')">
+                Buy Now
+              </button>
+
+              <button
+                onclick="chatSeller('Samsung Galaxy A15')">
+                Chat Seller
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <div class="product-image">
+            🍎
+          </div>
+
+          <div class="product-info">
+
+            <span class="condition">
+              Used - Good
+            </span>
+
+            <h3>
+              iPhone 13
+            </h3>
+
+            <div class="price">
+              ₦480,000
+            </div>
+
+            <div class="location">
+              📍 Asaba, Delta State
+            </div>
+
+            <div class="product-buttons">
+
+              <button class="buy"
+                onclick="buyProduct('iPhone 13','₦480,000','Asaba')">
+                Buy Now
+              </button>
+
+              <button
+                onclick="chatSeller('iPhone 13')">
+                Chat Seller
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <div class="product-image">
+            🎧
+          </div>
+
+          <div class="product-info">
+
+            <span class="condition">
+              Brand New
+            </span>
+
+            <h3>
+              Wireless Bluetooth Earbuds
+            </h3>
+
+            <div class="price">
+              ₦25,000
+            </div>
+
+            <div class="location">
+              📍 Ogwashi-Uku, Delta State
+            </div>
+
+            <div class="product-buttons">
+
+              <button class="buy"
+                onclick="buyProduct('Wireless Bluetooth Earbuds','₦25,000','Ogwashi-Uku')">
+                Buy Now
+              </button>
+
+              <button
+                onclick="chatSeller('Wireless Bluetooth Earbuds')">
+                Chat Seller
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="product">
+
+          <div class="product-image">
+            👟
+          </div>
+
+          <div class="product-info">
+
+            <span class="condition">
+              Brand New
+            </span>
+
+            <h3>
+              Men's Sneakers
+            </h3>
+
+            <div class="price">
+              ₦45,000
+            </div>
+
+            <div class="location">
+              📍 Asaba, Delta State
+            </div>
+
+            <div class="product-buttons">
+
+              <button class="buy"
+                onclick="buyProduct('Men’s Sneakers','₦45,000','Asaba')">
+                Buy Now
+              </button>
+
+              <button
+                onclick="chatSeller('Men’s Sneakers')">
+                Chat Seller
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SELL -->
+
+    <section class="sell-section" id="sell">
+
+      <div>
+
+        <h2>
+          Want to Sell Your Product?
+        </h2>
+
+        <p>
+          Contact IGEE Marketplace and tell us what you want to sell.
+          Our admin will collect the product information and list it
+          on the marketplace.
+        </p>
+
+      </div>
+
+      <a
+        class="btn btn-green"
+        href="https://wa.me/2347016877180?text=Hello%20IGEE%20Marketplace%2C%20I%20want%20to%20sell%20a%20product%20on%20your%20website."
+        target="_blank">
+
+        Sell Your Product
+
+      </a>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section>
+
+      <h2 class="section-title">
+        How IGEE Marketplace Works
+      </h2>
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">
+            1
+          </div>
+
+          <h3>
+            Find a Product
+          </h3>
+
+          <p>
+            Search and browse products available on IGEE Marketplace.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            2
+          </div>
+
+          <h3>
+            Contact IGEE
+          </h3>
+
+          <p>
+            Click Buy Now or Chat Seller to contact us through WhatsApp.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            3
+          </div>
+
+          <h3>
+            Confirm Your Order
+          </h3>
+
+          <p>
+            Confirm availability, discuss the price and arrange delivery.
+          </p>
+
+        </div>
+
+
+        <div class="step">
+
+          <div class="step-number">
+            4
+          </div>
+
+          <h3>
+            Arrange Delivery
+          </h3>
+
+          <p>
+            Delivery is available within Nigeria and fees depend on distance.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TRUST -->
+
+    <section class="trust">
+
+      <h2 class="section-title">
+        Shop With Confidence
+      </h2>
+
+      <ul>
+
+        <li>✓ Admin-managed product listings</li>
+
+        <li>✓ Product condition clearly displayed</li>
+
+        <li>✓ Product location displayed</li>
+
+        <li>✓ Direct customer support</li>
+
+        <li>✓ WhatsApp communication</li>
+
+        <li>✓ Delivery within Nigeria</li>
+
+        <li>✓ 50% off delivery on your first purchase</li>
+
+      </ul>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="footer-grid">
+
+      <div>
+
+        <h3>
+          IGEE Marketplace
+        </h3>
+
+        <p style="color:#aaa; line-height:1.6;">
+          Buy smart. Sell with confidence.
+          Your Nigerian online marketplace.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Marketplace
+        </h3>
+
+        <a href="#shop">Shop</a>
+        <a href="#sell">Sell Your Product</a>
+        <a href="#shop">Categories</a>
+        <a href="#cart">Cart</a>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Support
+        </h3>
+
+        <a href="https://wa.me/2347016877180" target="_blank">
+          WhatsApp
+        </a>
+
+        <a href="tel:+2347016877180">
+          Call Us
+        </a>
+
+        <a href="mailto:goodiemanson15@gmail.com">
+          Email Us
+        </a>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Information
+        </h3>
+
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Delivery Policy</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+      © 2026 IGEE Marketplace. All rights reserved.
+
+      <br>
+
+      Asaba & Ogwashi-Uku, Delta State, Nigeria.
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    const whatsappNumber = "2347016877180";
+
+    function buyProduct(name, price, location) {
+
+      const message =
+        "Hello IGEE Marketplace, I'm interested in buying the " +
+        name +
+        " listed on your website for " +
+        price +
+        ". It is located in " +
+        location +
+        ". Is it still available?";
+
+      const url =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(url, "_blank");
+
+    }
+
+
+    function chatSeller(name) {
+
+      const message =
+        "Hello IGEE Marketplace, I'm interested in the " +
+        name +
+        " listed on your website. Is it still available?";
+
+      const url =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+      window.open(url, "_blank");
+
+    }
+
+
+    function searchProducts() {
+
+      const search =
+        document.getElementById("searchInput").value.trim();
+
+      if (search === "") {
+
+        alert("Please enter a product name to search.");
+
+        return;
+
+      }
+
+      alert(
+        "You searched for: " +
+        search +
+        ". The full product search system will be added in the next stage."
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
